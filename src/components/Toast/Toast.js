@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ message, variant, onClose }) {
+function Toast({ children, variant, onClose }) {
   const filteredVariant = Object.hasOwn(ICONS_BY_VARIANT, variant)
     ? variant
     : "notice";
@@ -28,7 +28,7 @@ function Toast({ message, variant, onClose }) {
       <div className={styles.iconContainer}>
         <Tag size={24} />
       </div>
-      <p className={styles.content}>{message}</p>
+      <p className={styles.content}>{children}</p>
       <button className={styles.closeButton} onClick={onClose}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>

@@ -2,8 +2,16 @@ import React, { useState } from "react";
 
 import Toast from "../Toast";
 import styles from "./ToastShelf.module.css";
+import {ToastContext} from "../ToastProvider";
 
-function ToastShelf({ toasts, onToastClose }) {
+function ToastShelf() {
+  const { toasts, setToasts } = React.useContext(ToastContext);
+
+  const closeToast = (key) => {
+    const nextToasts = toasts.filter((toast) => toast.key !== key);
+    setToasts(nextToasts);
+  };
+
   return (
     <ol className={styles.wrapper}>
       {toasts &&
@@ -11,7 +19,7 @@ function ToastShelf({ toasts, onToastClose }) {
           <li key={toast.key} className={styles.toastWrapper}>
             <Toast
               variant={toast.variant}
-              onClose={() => onToastClose(toast.key)}
+              onClose={() => closeToast(toast.key)}
             >
               {toast.message}
             </Toast>

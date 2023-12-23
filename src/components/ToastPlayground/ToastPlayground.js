@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Button from "../Button";
 
 import styles from "./ToastPlayground.module.css";
-import Toast from "../Toast";
 import ToastShelf from "../ToastShelf";
 import { ToastContext } from "../ToastProvider";
 
